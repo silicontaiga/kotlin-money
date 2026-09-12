@@ -114,6 +114,30 @@ tasks.withType<Test>().configureEach {
     }
 }
 
+// Currency configuration is write-once per JVM and must happen before any Money exists, so a spec
+// that exercises it cannot share a JVM with one that does not. Those specs live in a `configuration`
+// subpackage, are excluded from the main test task, and run in a task that forks a JVM per class.
+tasks.test {
+    filter { excludeTestsMatching("io.github.silicontaiga.money.configuration.*") }
+}
+
+val configurationTest =
+    tasks.register<Test>("configurationTest") {
+        description = "Runs the currency-configuration specs, each in a JVM of its own."
+        group = LifecycleBasePlugin.VERIFICATION_GROUP
+        testClassesDirs =
+            sourceSets.test
+                .get()
+                .output.classesDirs
+        classpath = sourceSets.test.get().runtimeClasspath
+        filter { includeTestsMatching("io.github.silicontaiga.money.configuration.*") }
+        forkEvery = 1
+    }
+
+tasks.check {
+    dependsOn(configurationTest)
+}
+
 // ---------------------------------------------------------------------------
 // Coverage — 100% line and branch, build-breaking
 // ---------------------------------------------------------------------------

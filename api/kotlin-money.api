@@ -1,0 +1,223 @@
+public final class io/github/silicontaiga/money/Currencies {
+	public static final field INSTANCE Lio/github/silicontaiga/money/Currencies;
+	public final fun getCrypto ()Ljava/util/List;
+	public final fun getIso ()Ljava/util/List;
+}
+
+public final class io/github/silicontaiga/money/Currency {
+	public static final field Companion Lio/github/silicontaiga/money/Currency$Companion;
+	public final fun getCode ()Ljava/lang/String;
+	public final fun getScale ()I
+	public final fun getSymbol ()Ljava/lang/String;
+}
+
+public final class io/github/silicontaiga/money/Currency$Companion {
+	public final fun of (Ljava/lang/String;)Lio/github/silicontaiga/money/Currency;
+	public final fun ofOrNull (Ljava/lang/String;)Lio/github/silicontaiga/money/Currency;
+}
+
+public final class io/github/silicontaiga/money/CurrencyConfiguration {
+	public final fun addCurrency (Ljava/lang/String;ILjava/lang/String;)V
+	public final fun replaceCurrency (Ljava/lang/String;ILjava/lang/String;)V
+}
+
+public final class io/github/silicontaiga/money/MismatchedCurrencyException : java/lang/RuntimeException {
+	public final fun getFirst ()Lio/github/silicontaiga/money/Currency;
+	public final fun getSecond ()Lio/github/silicontaiga/money/Currency;
+}
+
+public final class io/github/silicontaiga/money/Money : java/lang/Comparable {
+	public static final field Companion Lio/github/silicontaiga/money/Money$Companion;
+	public final fun abs ()Lio/github/silicontaiga/money/Money;
+	public fun compareTo (Lio/github/silicontaiga/money/Money;)I
+	public synthetic fun compareTo (Ljava/lang/Object;)I
+	public final fun div (D)Lio/github/silicontaiga/money/Money;
+	public final fun div (I)Lio/github/silicontaiga/money/Money;
+	public final fun div (J)Lio/github/silicontaiga/money/Money;
+	public final fun div (Lio/github/silicontaiga/money/Money;)Ljava/math/BigDecimal;
+	public final fun div (Lio/github/silicontaiga/money/Money;Ljava/math/MathContext;)Ljava/math/BigDecimal;
+	public final fun div (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public final fun div (Ljava/math/BigDecimal;ILjava/math/RoundingMode;)Lio/github/silicontaiga/money/Money;
+	public static synthetic fun div$default (Lio/github/silicontaiga/money/Money;Ljava/math/BigDecimal;ILjava/math/RoundingMode;ILjava/lang/Object;)Lio/github/silicontaiga/money/Money;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAmount ()Ljava/math/BigDecimal;
+	public final fun getCurrency ()Lio/github/silicontaiga/money/Currency;
+	public final fun hasSameValueAs (Lio/github/silicontaiga/money/Money;)Z
+	public fun hashCode ()I
+	public final fun invoke (ILjava/math/RoundingMode;)Lio/github/silicontaiga/money/Money;
+	public static synthetic fun invoke$default (Lio/github/silicontaiga/money/Money;ILjava/math/RoundingMode;ILjava/lang/Object;)Lio/github/silicontaiga/money/Money;
+	public final fun minus (Lio/github/silicontaiga/money/Money;)Lio/github/silicontaiga/money/Money;
+	public final fun plus (Lio/github/silicontaiga/money/Money;)Lio/github/silicontaiga/money/Money;
+	public final fun times (D)Lio/github/silicontaiga/money/Money;
+	public final fun times (I)Lio/github/silicontaiga/money/Money;
+	public final fun times (J)Lio/github/silicontaiga/money/Money;
+	public final fun times (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public final fun times (Ljava/math/BigDecimal;ILjava/math/RoundingMode;)Lio/github/silicontaiga/money/Money;
+	public static synthetic fun times$default (Lio/github/silicontaiga/money/Money;Ljava/math/BigDecimal;ILjava/math/RoundingMode;ILjava/lang/Object;)Lio/github/silicontaiga/money/Money;
+	public final fun unaryMinus ()Lio/github/silicontaiga/money/Money;
+}
+
+public final class io/github/silicontaiga/money/Money$Companion {
+	public final fun configure (Lkotlin/jvm/functions/Function1;)V
+	public final fun of (DLio/github/silicontaiga/money/Currency;)Lio/github/silicontaiga/money/Money;
+	public final fun of (ILio/github/silicontaiga/money/Currency;)Lio/github/silicontaiga/money/Money;
+	public final fun of (ILio/github/silicontaiga/money/Currency;ILjava/math/RoundingMode;)Lio/github/silicontaiga/money/Money;
+	public final fun of (JLio/github/silicontaiga/money/Currency;)Lio/github/silicontaiga/money/Money;
+	public final fun of (Ljava/lang/String;Lio/github/silicontaiga/money/Currency;)Lio/github/silicontaiga/money/Money;
+	public final fun of (Ljava/math/BigDecimal;Lio/github/silicontaiga/money/Currency;)Lio/github/silicontaiga/money/Money;
+	public final fun of (Ljava/math/BigDecimal;Lio/github/silicontaiga/money/Currency;ILjava/math/RoundingMode;)Lio/github/silicontaiga/money/Money;
+	public static synthetic fun of$default (Lio/github/silicontaiga/money/Money$Companion;ILio/github/silicontaiga/money/Currency;ILjava/math/RoundingMode;ILjava/lang/Object;)Lio/github/silicontaiga/money/Money;
+	public static synthetic fun of$default (Lio/github/silicontaiga/money/Money$Companion;Ljava/math/BigDecimal;Lio/github/silicontaiga/money/Currency;ILjava/math/RoundingMode;ILjava/lang/Object;)Lio/github/silicontaiga/money/Money;
+}
+
+public final class io/github/silicontaiga/money/MoneyLiteralsKt {
+	public static final fun money (DLio/github/silicontaiga/money/Currency;)Lio/github/silicontaiga/money/Money;
+	public static final fun money (ILio/github/silicontaiga/money/Currency;)Lio/github/silicontaiga/money/Money;
+	public static final fun money (JLio/github/silicontaiga/money/Currency;)Lio/github/silicontaiga/money/Money;
+	public static final fun money (Ljava/lang/String;Lio/github/silicontaiga/money/Currency;)Lio/github/silicontaiga/money/Money;
+	public static final fun money (Ljava/math/BigDecimal;Lio/github/silicontaiga/money/Currency;)Lio/github/silicontaiga/money/Money;
+}
+
+public final class io/github/silicontaiga/money/MoneySuffixesKt {
+	public static final fun getAud (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getAud (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getAud (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getAud (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getAud (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getBrl (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getBrl (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getBrl (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getBrl (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getBrl (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getBtc (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getBtc (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getBtc (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getBtc (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getBtc (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getCad (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getCad (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getCad (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getCad (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getCad (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getChf (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getChf (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getChf (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getChf (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getChf (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getCny (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getCny (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getCny (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getCny (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getCny (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getCzk (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getCzk (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getCzk (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getCzk (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getCzk (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getDkk (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getDkk (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getDkk (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getDkk (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getDkk (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getEth (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getEth (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getEth (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getEth (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getEth (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getEur (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getEur (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getEur (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getEur (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getEur (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getGbp (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getGbp (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getGbp (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getGbp (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getGbp (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getHkd (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getHkd (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getHkd (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getHkd (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getHkd (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getHuf (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getHuf (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getHuf (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getHuf (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getHuf (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getIls (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getIls (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getIls (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getIls (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getIls (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getInr (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getInr (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getInr (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getInr (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getInr (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getJpy (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getJpy (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getJpy (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getJpy (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getJpy (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getKrw (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getKrw (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getKrw (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getKrw (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getKrw (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getMxn (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getMxn (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getMxn (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getMxn (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getMxn (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getNok (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getNok (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getNok (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getNok (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getNok (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getNzd (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getNzd (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getNzd (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getNzd (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getNzd (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getPln (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getPln (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getPln (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getPln (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getPln (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getRub (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getRub (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getRub (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getRub (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getRub (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getSek (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getSek (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getSek (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getSek (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getSek (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getSgd (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getSgd (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getSgd (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getSgd (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getSgd (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getUsd (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getUsd (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getUsd (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getUsd (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getUsd (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getUsdc (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getUsdc (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getUsdc (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getUsdc (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getUsdc (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getUsdt (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getUsdt (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getUsdt (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getUsdt (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getUsdt (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+	public static final fun getZar (D)Lio/github/silicontaiga/money/Money;
+	public static final fun getZar (I)Lio/github/silicontaiga/money/Money;
+	public static final fun getZar (J)Lio/github/silicontaiga/money/Money;
+	public static final fun getZar (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
+	public static final fun getZar (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+}
+
