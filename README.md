@@ -9,9 +9,9 @@
 
 Exact, explicit money arithmetic for Kotlin/JVM.
 
-> **Not yet implemented.** The repository is scaffolded and the build is proven end to end; there is
-> no library code and no release. What follows is the API this library is being built to, and it may
-> still change before the first tag.
+> **No release yet.** The API below is implemented and the full gate is green, but nothing has been
+> tagged, so there is no Maven Central artifact to depend on. Until the first release the API may
+> still change.
 
 ## Usage
 
@@ -44,7 +44,7 @@ matters: `allocate` loses nothing, `/` rounds.
 
 ```kotlin
 10.eur.allocate(3)                 // 3.34, 3.33, 3.33  — sums to exactly 10.00
-10.eur.allocate(1, 1, 3)           // 2.00, 2.00, 6.00  — by ratio
+10.eur.allocate(listOf(1, 1, 3))   // 2.00, 2.00, 6.00  — by ratio
 11.eur(0).allocate(3)              // 4, 4, 3           — two whole units over
 62.56.eur.allocate(3, scale = 0)   // 21.56, 21, 20     — see below
 ```
@@ -125,6 +125,12 @@ money first.
 ```kotlin
 62.56.eur.allocate(3, scale = 0, bias = RemainderBias.LAST)   // 20, 21, 21.56
 ```
+
+Ratios arrive as a list rather than as loose arguments. A `vararg Int` would collide with the
+equal-split overload at two positional arguments — Kotlin resolves `allocate(1, 1)` to
+`parts = 1, scale = 1`, so a caller asking for a 50/50 split would silently receive one undivided
+part. Differing by parameter type instead puts resolution beyond doubt, and `allocate(1, 1, 3)` is
+now a compile error rather than a wrong answer.
 
 Negative amounts mirror the positive case, so `(-m).allocate(n)` equals `m.allocate(n).map { -it }`
 and a credit note still matches the invoice it reverses. Ratios may be zero — a party entitled to
@@ -221,7 +227,7 @@ an all-zero ratio list.
 | Construct | `123.eur`, `123.eur(4)`, `"123.12".eur`, `Money.of(123, EUR)`, `123.money(EUR)` — each from `Int`, `Long`, `Double`, `String` or `BigDecimal` |
 | Read | `amount`, `currency` |
 | Combine | `a + b`, `a - b`, `-m`, `m * 2`, `m / 2`, `m / other` (→ a plain number) |
-| Allocate | `m.allocate(n)`, `m.allocate(vararg ratios)`, with optional `scale` and `bias` |
+| Allocate | `m.allocate(n)`, `m.allocate(ratios: List<Int>)`, each with optional `scale` and `bias` |
 | Compare | `Comparable<Money>`; `a == b` (scale-sensitive), `a.hasSameValueAs(b)`, `compareTo` by value |
 | Helpers | `abs()`, `unaryMinus()`, `isZero`, `isPositive`, `isNegative`, `withScale(scale, mode)`, `withCurrencyScale(mode)` |
 | Aggregate | `sum()` over any `Iterable<Money>`, `Money.total(currency, iterable)` |

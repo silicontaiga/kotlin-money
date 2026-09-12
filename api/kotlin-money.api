@@ -46,6 +46,9 @@ public final class io/github/silicontaiga/money/Money : java/lang/Comparable {
 	public fun hashCode ()I
 	public final fun invoke (ILjava/math/RoundingMode;)Lio/github/silicontaiga/money/Money;
 	public static synthetic fun invoke$default (Lio/github/silicontaiga/money/Money;ILjava/math/RoundingMode;ILjava/lang/Object;)Lio/github/silicontaiga/money/Money;
+	public final fun isNegative ()Z
+	public final fun isPositive ()Z
+	public final fun isZero ()Z
 	public final fun minus (Lio/github/silicontaiga/money/Money;)Lio/github/silicontaiga/money/Money;
 	public final fun plus (Lio/github/silicontaiga/money/Money;)Lio/github/silicontaiga/money/Money;
 	public final fun times (D)Lio/github/silicontaiga/money/Money;
@@ -54,7 +57,12 @@ public final class io/github/silicontaiga/money/Money : java/lang/Comparable {
 	public final fun times (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
 	public final fun times (Ljava/math/BigDecimal;ILjava/math/RoundingMode;)Lio/github/silicontaiga/money/Money;
 	public static synthetic fun times$default (Lio/github/silicontaiga/money/Money;Ljava/math/BigDecimal;ILjava/math/RoundingMode;ILjava/lang/Object;)Lio/github/silicontaiga/money/Money;
+	public fun toString ()Ljava/lang/String;
 	public final fun unaryMinus ()Lio/github/silicontaiga/money/Money;
+	public final fun withCurrencyScale (Ljava/math/RoundingMode;)Lio/github/silicontaiga/money/Money;
+	public static synthetic fun withCurrencyScale$default (Lio/github/silicontaiga/money/Money;Ljava/math/RoundingMode;ILjava/lang/Object;)Lio/github/silicontaiga/money/Money;
+	public final fun withScale (ILjava/math/RoundingMode;)Lio/github/silicontaiga/money/Money;
+	public static synthetic fun withScale$default (Lio/github/silicontaiga/money/Money;ILjava/math/RoundingMode;ILjava/lang/Object;)Lio/github/silicontaiga/money/Money;
 }
 
 public final class io/github/silicontaiga/money/Money$Companion {
@@ -68,6 +76,18 @@ public final class io/github/silicontaiga/money/Money$Companion {
 	public final fun of (Ljava/math/BigDecimal;Lio/github/silicontaiga/money/Currency;ILjava/math/RoundingMode;)Lio/github/silicontaiga/money/Money;
 	public static synthetic fun of$default (Lio/github/silicontaiga/money/Money$Companion;ILio/github/silicontaiga/money/Currency;ILjava/math/RoundingMode;ILjava/lang/Object;)Lio/github/silicontaiga/money/Money;
 	public static synthetic fun of$default (Lio/github/silicontaiga/money/Money$Companion;Ljava/math/BigDecimal;Lio/github/silicontaiga/money/Currency;ILjava/math/RoundingMode;ILjava/lang/Object;)Lio/github/silicontaiga/money/Money;
+	public final fun total (Lio/github/silicontaiga/money/Currency;Ljava/lang/Iterable;)Lio/github/silicontaiga/money/Money;
+}
+
+public final class io/github/silicontaiga/money/MoneyAggregationKt {
+	public static final fun sum (Ljava/lang/Iterable;)Lio/github/silicontaiga/money/Money;
+}
+
+public final class io/github/silicontaiga/money/MoneyAllocationKt {
+	public static final fun allocate (Lio/github/silicontaiga/money/Money;IILio/github/silicontaiga/money/RemainderBias;)Ljava/util/List;
+	public static final fun allocate (Lio/github/silicontaiga/money/Money;Ljava/util/List;ILio/github/silicontaiga/money/RemainderBias;)Ljava/util/List;
+	public static synthetic fun allocate$default (Lio/github/silicontaiga/money/Money;IILio/github/silicontaiga/money/RemainderBias;ILjava/lang/Object;)Ljava/util/List;
+	public static synthetic fun allocate$default (Lio/github/silicontaiga/money/Money;Ljava/util/List;ILio/github/silicontaiga/money/RemainderBias;ILjava/lang/Object;)Ljava/util/List;
 }
 
 public final class io/github/silicontaiga/money/MoneyLiteralsKt {
@@ -76,6 +96,19 @@ public final class io/github/silicontaiga/money/MoneyLiteralsKt {
 	public static final fun money (JLio/github/silicontaiga/money/Currency;)Lio/github/silicontaiga/money/Money;
 	public static final fun money (Ljava/lang/String;Lio/github/silicontaiga/money/Currency;)Lio/github/silicontaiga/money/Money;
 	public static final fun money (Ljava/math/BigDecimal;Lio/github/silicontaiga/money/Currency;)Lio/github/silicontaiga/money/Money;
+}
+
+public final class io/github/silicontaiga/money/MoneyPercentageKt {
+	public static final fun asPercentageOf (Lio/github/silicontaiga/money/Money;Lio/github/silicontaiga/money/Money;)Lio/github/silicontaiga/percentage/Percentage;
+	public static final fun decreasedBy (Lio/github/silicontaiga/money/Money;Lio/github/silicontaiga/percentage/Percentage;)Lio/github/silicontaiga/money/Money;
+	public static final fun decreasedBy (Lio/github/silicontaiga/money/Money;Lio/github/silicontaiga/percentage/Percentage;ILjava/math/RoundingMode;)Lio/github/silicontaiga/money/Money;
+	public static synthetic fun decreasedBy$default (Lio/github/silicontaiga/money/Money;Lio/github/silicontaiga/percentage/Percentage;ILjava/math/RoundingMode;ILjava/lang/Object;)Lio/github/silicontaiga/money/Money;
+	public static final fun increasedBy (Lio/github/silicontaiga/money/Money;Lio/github/silicontaiga/percentage/Percentage;)Lio/github/silicontaiga/money/Money;
+	public static final fun increasedBy (Lio/github/silicontaiga/money/Money;Lio/github/silicontaiga/percentage/Percentage;ILjava/math/RoundingMode;)Lio/github/silicontaiga/money/Money;
+	public static synthetic fun increasedBy$default (Lio/github/silicontaiga/money/Money;Lio/github/silicontaiga/percentage/Percentage;ILjava/math/RoundingMode;ILjava/lang/Object;)Lio/github/silicontaiga/money/Money;
+	public static final fun of (Lio/github/silicontaiga/percentage/Percentage;Lio/github/silicontaiga/money/Money;)Lio/github/silicontaiga/money/Money;
+	public static final fun of (Lio/github/silicontaiga/percentage/Percentage;Lio/github/silicontaiga/money/Money;ILjava/math/RoundingMode;)Lio/github/silicontaiga/money/Money;
+	public static synthetic fun of$default (Lio/github/silicontaiga/percentage/Percentage;Lio/github/silicontaiga/money/Money;ILjava/math/RoundingMode;ILjava/lang/Object;)Lio/github/silicontaiga/money/Money;
 }
 
 public final class io/github/silicontaiga/money/MoneySuffixesKt {
@@ -219,5 +252,13 @@ public final class io/github/silicontaiga/money/MoneySuffixesKt {
 	public static final fun getZar (J)Lio/github/silicontaiga/money/Money;
 	public static final fun getZar (Ljava/lang/String;)Lio/github/silicontaiga/money/Money;
 	public static final fun getZar (Ljava/math/BigDecimal;)Lio/github/silicontaiga/money/Money;
+}
+
+public final class io/github/silicontaiga/money/RemainderBias : java/lang/Enum {
+	public static final field FIRST Lio/github/silicontaiga/money/RemainderBias;
+	public static final field LAST Lio/github/silicontaiga/money/RemainderBias;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/github/silicontaiga/money/RemainderBias;
+	public static fun values ()[Lio/github/silicontaiga/money/RemainderBias;
 }
 

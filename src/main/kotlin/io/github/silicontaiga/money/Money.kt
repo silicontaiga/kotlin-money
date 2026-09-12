@@ -49,7 +49,50 @@ public class Money internal constructor(
     public operator fun invoke(
         scale: Int,
         roundingMode: RoundingMode = RoundingMode.HALF_EVEN,
+    ): Money = withScale(scale, roundingMode)
+
+    /**
+     * Returns this money at exactly [scale] decimal places, rounding by [roundingMode].
+     *
+     * A scale finer than the value needs pads it; a coarser one rounds.
+     */
+    public fun withScale(
+        scale: Int,
+        roundingMode: RoundingMode = RoundingMode.HALF_EVEN,
     ): Money = Money(amount.setScale(scale, roundingMode), currency)
+
+    /**
+     * Returns this money at its currency's scale, which is to say a *payable* amount.
+     *
+     * Not every money is payable — `0.033 EUR` is a legitimate value — so a caller who needs a
+     * figure that could actually be settled asks for one by name rather than getting it by accident.
+     */
+    public fun withCurrencyScale(roundingMode: RoundingMode = RoundingMode.HALF_EVEN): Money = withScale(currency.scale, roundingMode)
+
+    /** Whether this money is exactly zero, whatever its scale. */
+    public val isZero: Boolean
+        get() = amount.signum() == 0
+
+    /** Whether this money is greater than zero. Zero itself is neither positive nor negative. */
+    public val isPositive: Boolean
+        get() = amount.signum() > 0
+
+    /** Whether this money is less than zero. */
+    public val isNegative: Boolean
+        get() = amount.signum() < 0
+
+    /**
+     * Returns this money as `"123.45 EUR"` — the amount at its stored scale, a space, then the
+     * currency code.
+     *
+     * Debug output, on the same terms the sibling library states: locale-independent, never
+     * abbreviated, never in scientific notation, and reproducible on any machine. Use `java.text`
+     * for anything a person reads.
+     *
+     * The **code and never the symbol**, because `$1.00` does not say which dollar. Trailing zeros
+     * are printed, since scale is part of the value.
+     */
+    override fun toString(): String = "${amount.toPlainString()} ${currency.code}"
 
     /**
      * Returns the sum of this money and [other], so `12.34.eur + 0.66.eur` is `13.00 EUR`.
@@ -180,7 +223,7 @@ public class Money internal constructor(
         return amount.compareTo(other.amount)
     }
 
-    private fun requireSameCurrency(other: Money) {
+    internal fun requireSameCurrency(other: Money) {
         if (currency != other.currency) throw MismatchedCurrencyException(currency, other.currency)
     }
 
@@ -210,6 +253,21 @@ public class Money internal constructor(
 
     /** Ways of obtaining a [Money]. */
     public companion object {
+        /**
+         * Returns the sum of [amounts] in [currency], which is `0` at the currency's scale when
+         * there are none.
+         *
+         * The empty-safe counterpart to [sum]: naming the currency is what makes the zero well
+         * defined. With elements, the result takes the largest scale among them, consistent with
+         * [plus].
+         *
+         * @throws MismatchedCurrencyException if any amount is in a currency other than [currency].
+         */
+        public fun total(
+            currency: Currency,
+            amounts: Iterable<Money>,
+        ): Money = amounts.fold(of(BigDecimal.ZERO, currency)) { running, amount -> running + amount }
+
         /**
          * Extends or replaces the shipped currency definitions, **once, before any money exists**.
          *
