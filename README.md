@@ -9,9 +9,8 @@
 
 Exact, explicit money arithmetic for Kotlin/JVM.
 
-> **No release yet.** The API below is implemented and the full gate is green, but nothing has been
-> tagged, so there is no Maven Central artifact to depend on. Until the first release the API may
-> still change.
+While the version stays below `1.0.0` the API may still change — see
+[versioning](CONTRIBUTING.md#releases).
 
 ## Usage
 
@@ -239,7 +238,8 @@ it throws. It is published per release, so a version can be read at the version 
 on:
 
 - [Latest release](https://silicontaiga.github.io/kotlin-money/latest/)
-- A specific one at `https://silicontaiga.github.io/kotlin-money/<version>/`
+- A specific one at `https://silicontaiga.github.io/kotlin-money/<version>/` — for example
+  [0.1.0](https://silicontaiga.github.io/kotlin-money/0.1.0/)
 
 ## Install
 
@@ -273,7 +273,7 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.silicontaiga:kotlin-money:0.1.0-SNAPSHOT")
+    implementation("io.github.silicontaiga:kotlin-money:0.1.1-SNAPSHOT")
 }
 ```
 
